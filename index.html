@@ -28,9 +28,7 @@
             margin: 0; padding: 0; overflow-x: hidden;
         }
 
-        body.locked { overflow: hidden; height: 100vh; }
-
-        h1, h2, h3, h4, p, span, a, li, .loading-text {
+        h1, h2, h3, h4, p, span, a, li {
             text-shadow: 
                 0 2px 4px rgba(0,0,0,1), 
                 0 8px 20px rgba(0,0,0,0.9), 
@@ -88,57 +86,6 @@
 
         .nav-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap;}
         .nav-buttons a { font-size: 1.2rem; padding: 12px 30px; letter-spacing: 2px;}
-
-        /* --- PRELOADER (INDIVIDUAL LETTER WATER WAVE FILL) --- */
-        #loader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-color); z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
-        
-        .loader-text-wrapper { 
-            display: flex; 
-            align-items: center; 
-            font-size: 22px; 
-            font-weight: 900; 
-            letter-spacing: -2px; 
-        }
-
-        .loader-letter { 
-    display: inline-block;
-    color: transparent; 
-    
-    /* Removed text-stroke so it starts completely invisible */
-    
-    /* New inverted SVG: Solid white at the TOP, wave at the BOTTOM */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath fill='%23FFFFFF' d='M0,0 L200,0 L200,100 C150,50 150,150 100,100 C50,50 50,150 0,100 Z'/%3E%3C/svg%3E");
-    background-repeat: repeat-x;
-    background-size: 100px 150px; 
-    background-position: 0px -150px; /* Starts completely ABOVE the text */
-    
-    -webkit-background-clip: text;
-    background-clip: text;
-    text-shadow: none !important; 
-}
-        #rocket-wrapper {
-            position: relative;
-            display: inline-block;
-            margin: 0 4px;
-            z-index: 5;
-        }
-
-        /* Solid smoke trail styling */
-        #smoke-trail {
-            position: absolute;
-            top: 80%; /* Attaches just slightly inside the rocket */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px; /* Thickness at the start */
-            height: 0px; 
-            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.1) 100%);
-            border-radius: 4px;
-            z-index: -1;
-            pointer-events: none;
-        }
 
         /* --- 3D CANVAS & LAYOUT --- */
         #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
@@ -285,7 +232,7 @@
             backface-visibility: hidden; -webkit-backface-visibility: hidden;
             border-radius: 12px; padding: 20px; display: flex; flex-direction: column;
             border: 2px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden; /* Added to contain the golden shine */
+            overflow: hidden; 
         }
 
         .flip-card-front {
@@ -331,19 +278,18 @@
                 transparent 80%
             );
             transform: skewX(-25deg);
-    z-index: 10;
-    pointer-events: none;
-    opacity: 0; /* Completely invisible by default */
-    /* Added opacity to the transition */
-    transition: left 0.6s cubic-bezier(0.4, 0.2, 0.2, 1), opacity 0.1s ease;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0; 
+            transition: left 0.6s cubic-bezier(0.4, 0.2, 0.2, 1), opacity 0.1s ease;
         }
 
         .flip-card:hover .flip-card-front::after,
         .flip-card:active .flip-card-front::after,
         .flip-card:hover .flip-card-back::after,
         .flip-card:active .flip-card-back::after {
-            left: 200%; /* Sweeps all the way across */
-    opacity: 1; /* Appears instantly when sweeping */
+            left: 200%; 
+            opacity: 1; 
         }
 
         .event-meta { background: rgba(252, 163, 17, 0.1); padding: 10px; border-left: 3px solid var(--brand-yellow); border-radius: 4px; }
@@ -374,13 +320,7 @@
         #sponsors .marquee-wrapper:first-of-type { margin-bottom: 40px; }
     </style>
 </head>
-<body class="locked">
-
-    <div id="loader">
-        <div class="loader-text-wrapper">
-            <span class="loader-letter">E</span><span class="loader-letter">-</span><span class="loader-letter">S</span><span class="loader-letter">U</span><span class="loader-letter">M</span><span class="loader-letter">M</span><span class="loader-letter">I</span><span id="rocket-wrapper"><span class="loader-letter" id="rocket-letter"><i class="fa-solid fa-rocket"></i></span><div id="smoke-trail"></div></span><span class="loader-letter">2</span><span class="loader-letter">6</span><span class="loader-letter">'</span>
-        </div>
-    </div>
+<body>
 
     <header id="navbar">
         <a href="#" class="logo"><img src="e-logo.png" alt="UIET KUK Logo" class="header-logo"></a>
@@ -399,10 +339,10 @@
             <li><a href="#events" class="nav-item">Events</a></li>
             <li><a href="#speakers" class="nav-item">Speakers</a></li>
             <li><a href="#sponsors" class="nav-item">Sponsors</a></li>
-            <li><a href="#accommodation" class="nav-item">Stay</a></li>
+            <li><a href="campus.html" class="nav-item">Campus</a></li>
             <li class="nav-buttons">
-                <a href="#" class="btn-primary nav-item">Register</a>
-                <a href="#" class="btn-secondary nav-item">Login</a>
+                <a href="register.html" class="btn-primary nav-item">Register</a>
+                <a href="register.html" class="btn-secondary nav-item">Login</a>
             </li>
         </ul>
     </div>
@@ -424,8 +364,8 @@
                 <p class="hero-bottom"><span class="highlight">I</span>GNITING &nbsp;<span class="highlight">T</span>HE &nbsp;<span class="highlight">S</span>HIFT</p>
                 
                 <div class="hero-buttons">
-                    <a href="#" class="btn-primary">Register</a>
-                    <a href="#" class="btn-secondary">Login</a>
+                    <a href="register.html" class="btn-primary">Register</a>
+                    <a href="register.html" class="btn-secondary">Login</a>
                 </div>
             </div>
         </section>
@@ -454,27 +394,27 @@
                 
                 <div class="marquee-wrapper">
                     <div class="marquee-track">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Event Prep">
-                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Tech Setup">
-                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Meeting">
-                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Networking">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Event Prep">
-                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Tech Setup">
-                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Meeting">
-                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Networking">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Event Prep">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Tech Setup">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Meeting">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Networking">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Event Prep">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Tech Setup">
+                        <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Meeting">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Networking">
                     </div>
                 </div>
 
                 <div class="marquee-wrapper">
                     <div class="marquee-track reverse">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Planning">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Team">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Execution">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Coding">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Planning">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Team">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Execution">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" class="journey-img" alt="Coding">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Planning">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Team">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Execution">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Coding">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Planning">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Team">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Execution">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" loading="lazy" class="journey-img" alt="Coding">
                     </div>
                 </div>
 
@@ -677,36 +617,36 @@
                 <div class="marquee-wrapper">
                     <div class="marquee-track">
                         <div class="speaker-card">
-                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Speaker"></div>
+                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" loading="lazy" alt="Speaker"></div>
                             <h3>Arjun Sethi</h3><p>CEO, Tech Innovators</p>
                         </div>
                         <div class="speaker-card">
-                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Speaker"></div>
+                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" loading="lazy" alt="Speaker"></div>
                             <h3>Priya Sharma</h3><p>Founder, ScaleUp VC</p>
                         </div>
                         <div class="speaker-card">
-                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" alt="Speaker"></div>
+                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" loading="lazy" alt="Speaker"></div>
                             <h3>Rohan Das</h3><p>VP, Global Disrupt</p>
                         </div>
                         <div class="speaker-card">
-                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" alt="Speaker"></div>
+                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" loading="lazy" alt="Speaker"></div>
                             <h3>Neha Gupta</h3><p>AI Lead, NeuralNet</p>
                         </div>
                         
                         <div class="speaker-card">
-                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Speaker"></div>
+                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" loading="lazy" alt="Speaker"></div>
                             <h3>Arjun Sethi</h3><p>CEO, Tech Innovators</p>
                         </div>
                         <div class="speaker-card">
-                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Speaker"></div>
+                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" loading="lazy" alt="Speaker"></div>
                             <h3>Priya Sharma</h3><p>Founder, ScaleUp VC</p>
                         </div>
                         <div class="speaker-card">
-                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" alt="Speaker"></div>
+                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" loading="lazy" alt="Speaker"></div>
                             <h3>Rohan Das</h3><p>VP, Global Disrupt</p>
                         </div>
                         <div class="speaker-card">
-                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" alt="Speaker"></div>
+                            <div class="speaker-photo"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" loading="lazy" alt="Speaker"></div>
                             <h3>Neha Gupta</h3><p>AI Lead, NeuralNet</p>
                         </div>
                     </div>
@@ -721,43 +661,30 @@
                 
                 <div class="marquee-wrapper">
                     <div class="marquee-track">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="sponsor-logo" alt="Google">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" class="sponsor-logo" alt="Microsoft">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="sponsor-logo" alt="Amazon">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" class="sponsor-logo" alt="Cisco">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" loading="lazy" class="sponsor-logo" alt="Google">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" loading="lazy" class="sponsor-logo" alt="Microsoft">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" loading="lazy" class="sponsor-logo" alt="Amazon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" loading="lazy" class="sponsor-logo" alt="Cisco">
                         
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="sponsor-logo" alt="Google">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" class="sponsor-logo" alt="Microsoft">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="sponsor-logo" alt="Amazon">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" class="sponsor-logo" alt="Cisco">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" loading="lazy" class="sponsor-logo" alt="Google">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" loading="lazy" class="sponsor-logo" alt="Microsoft">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" loading="lazy" class="sponsor-logo" alt="Amazon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg" loading="lazy" class="sponsor-logo" alt="Cisco">
                     </div>
                 </div>
 
                 <div class="marquee-wrapper">
                     <div class="marquee-track reverse">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" class="sponsor-logo" alt="IBM">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg" class="sponsor-logo" alt="Intel">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" class="sponsor-logo" alt="TCS">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" class="sponsor-logo" alt="Infosys">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" loading="lazy" class="sponsor-logo" alt="IBM">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg" loading="lazy" class="sponsor-logo" alt="Intel">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" loading="lazy" class="sponsor-logo" alt="TCS">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" loading="lazy" class="sponsor-logo" alt="Infosys">
                         
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" class="sponsor-logo" alt="IBM">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg" class="sponsor-logo" alt="Intel">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" class="sponsor-logo" alt="TCS">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" class="sponsor-logo" alt="Infosys">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" loading="lazy" class="sponsor-logo" alt="IBM">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Intel_logo_%282020%2C_light_blue%29.svg" loading="lazy" class="sponsor-logo" alt="Intel">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Tata_Consultancy_Services_Logo.svg" loading="lazy" class="sponsor-logo" alt="TCS">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg" loading="lazy" class="sponsor-logo" alt="Infosys">
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="accommodation">
-            <div class="ui-panel">
-                <h2>BASE <span style="color: var(--text-white); font-weight: 300;">CAMP</span></h2>
-                <p class="subtitle">Safe and premium hostel accommodations for all out-station delegates.</p>
-                <div class="glass-card" style="width: 100%; max-width: 500px; margin: 0 auto; border-top-color: #fff;">
-                    <h3>Hostel Allotment</h3>
-                    <p>Secure your space inside the UIET campus. Accommodations include 24/7 high-speed Wi-Fi, 3 daily meals in the mess, and round-the-clock security.</p>
-                    <br>
-                    <button class="view-all-btn" style="margin-top: 10px; width: auto; padding: 12px 30px;">Request Allotment</button>
                 </div>
             </div>
         </section>
@@ -774,7 +701,7 @@
                         <li><a href="#about">About Us</a></li>
                         <li><a href="#events">Schedule</a></li>
                         <li><a href="#speakers">Speakers</a></li>
-                        <li><a href="#accommodation">Accommodation</a></li>
+                        <li><a href="campus.html">Campus</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -1000,66 +927,8 @@
         });
 
         // ==========================================
-        // STAGGERED RANDOM WAVE FILL & PERFECT LAUNCH
+        // INITIALIZE SCROLL ANIMATIONS DIRECTLY
         // ==========================================
-        window.addEventListener("load", () => {
-            const letters = document.querySelectorAll(".loader-letter"); 
-            const rocketWrapper = document.getElementById("rocket-wrapper");
-            const smokeTrail = document.getElementById("smoke-trail");
-            const loader = document.getElementById("loader");
-            
-            // Push the wave completely below the text to start
-            gsap.set(letters, { backgroundPositionY: "-150px" });
-
-            // Endless horizontal moving wave
-            gsap.to(letters, {
-                backgroundPositionX: "100px", 
-                duration: 1.2, 
-                ease: "none",
-                repeat: -1
-            });
-
-            let tl = gsap.timeline();
-
-            // Slower, random, staggered fill taking ~4.5 seconds total
-            tl.to(letters, {
-                backgroundPositionY: "20px", // Pulls the wave all the way up so the solid bottom covers the text
-                duration: 3, 
-                ease: "power2.inOut",
-                stagger: {
-                    amount: 1.5, 
-                    from: "random"
-                }
-            })
-            // Launch the rocket right AFTER the sequence finishes (Wait 0.3s so the text is fully legible)
-            .to(rocketWrapper, {
-                y: -1000, 
-                scale: 1.5,
-                duration: 1.2, 
-                ease: "power3.in"
-            }, "+=0.3") 
-            // Animate the smoke trail dynamically at the exact same time as rocket
-            .to(smokeTrail, {
-                height: "800px", // Stretches all the way down to the "ground"
-                scaleX: 0.2, // Becomes thin as it goes up
-                opacity: 0, // Eventually diffuses to nothing
-                duration: 1.2,
-                ease: "power3.in"
-            }, "<")
-            // Fade out the loader screen
-            .to(loader, {
-                opacity: 0, 
-                duration: 0.5, 
-                ease: "power2.in",
-                onComplete: () => {
-                    loader.style.display = "none"; 
-                    document.body.classList.remove('locked'); 
-                    ScrollTrigger.refresh(); 
-                    initScrollAnimations();
-                }
-            });
-        });
-
         function initScrollAnimations() {
             gsap.to("#hero .ui-panel", { opacity: 1, y: 0, duration: 1, ease: "power3.out" });
 
@@ -1080,6 +949,12 @@
                 });
             });
         }
+        
+        // Wait for DOM to load, then instantly start the scroll triggers (since preloader is gone)
+        document.addEventListener("DOMContentLoaded", () => {
+            ScrollTrigger.refresh(); 
+            initScrollAnimations();
+        });
     </script>
 </body>
 </html>
